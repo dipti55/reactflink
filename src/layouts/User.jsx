@@ -1,11 +1,8 @@
-// UserLayouts.jsx
-import React from 'react';
-import { Outlet } from 'react-router-dom';
-import { AppBar, Box, CssBaseline, Drawer, List, ListItem, ListItemIcon, ListItemText, Toolbar, Typography, Avatar } from '@mui/material';
+
+import { AppBar, Box, Drawer, List, ListItem, ListItemIcon, ListItemText, Toolbar, Typography, Avatar } from '@mui/material';
 import { Notifications } from '@mui/icons-material';
 import hdfcLogo from './../assets/images/hdfcLogo.png';
 import profile from './../assets/images/profile.jpg';
-import BusinessIcon from '@mui/icons-material/Business';
 
 const drawerWidth = 240;
 
@@ -22,9 +19,7 @@ const menuItems = [
 export default function UserLayouts() {
   return (
     <Box sx={{ display: 'flex' }}>
-      {/* <CssBaseline /> */}
-
-      {/* AppBar */}
+ 
       <AppBar position="fixed" sx={{ zIndex: 1201, backgroundColor: '#2b6390', height: 60, justifyContent: 'center' }}>
         <Toolbar sx={{ justifyContent: 'space-between', minHeight: '60px !important' }}>
           <Box>
@@ -64,26 +59,7 @@ export default function UserLayouts() {
       </Drawer>
 
       {/* Main Content */}
-      <Box component="main" sx={{ flexGrow: 1, p: 3, background: '#f5f5f5', minHeight: '100vh' }}>
-        <Toolbar />
-        <Outlet />
-      </Box>
+      
     </Box>
   );
 }
-
-
-// import { Box } from "@mui/material"
-// import Header from "../components/Header"
-
-// const User = ()=>{
-//     return(
-//         <>
-//         <Box>
-//             <Header/>
-//         </Box>
-//         </>
-//     )
-// }
-
-// export default User;
