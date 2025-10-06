@@ -12,6 +12,12 @@ const Theme = createTheme({
             light: "#F6F8FC",
             blueSelected: "#E2EFFA",
             mediumBlue: "#4E7EA6",
+            bodyBackground: "#F3F3F3",
+            deleteBg: "#ff000021",
+            priamryRed:"#ED232A",
+            hoverRed:"#BD0A10",
+            cancelBg:"#DFE3E8"
+
         },
         text: {
             primary: "#4D4D4D",
@@ -19,6 +25,7 @@ const Theme = createTheme({
             disabled: "#B3B3B3",
             primaryNavyBlue: "#286090",
             greyShade100: "#1F1F1F",
+            white:"#FFFFFF",
 
         },
         grey: {
@@ -31,6 +38,11 @@ const Theme = createTheme({
         primary: {
             main: "#1D86FF",
         },
+        custom: {
+            boxShadowRed: "0px 0px 20px rgba(237, 35, 42, 0.6)",
+            cancelBorder:"#DFE3E8"
+
+        }
     },
     shape: {
         borderRadius: 8,
@@ -163,6 +175,24 @@ const Theme = createTheme({
                         },
                     },
                 },
+                {
+                    props: { variant: "deleteConfirm" },
+                    style: ({ theme }) => ({
+                        backgroundColor: theme.palette.background.priamryRed,
+                        color: theme.palette.text.white,
+                        "&:hover": {
+                            backgroundColor: theme.palette.background.hoverRed,
+                        },
+                    }),
+                },
+                {
+                    props: { variant: "deleteCancel" },
+                    style: ({ theme }) => ({
+                        backgroundColor: theme.palette.background.cancelBg,
+                        border: `1px solid ${theme.palette.custom.cancelBorder}`,
+                        color: theme.palette.grey[300],
+                    }),
+                },
             ],
         },
         MuiOutlinedInput: {
@@ -236,18 +266,18 @@ const Theme = createTheme({
             variants: [{
                 props: { variant: "customCard" },
                 style: ({ theme }) => ({
-                    border:"1px solid #D9D9D9",
+                    border: "1px solid #D9D9D9",
                     "&:hover": {
-                        borderColor:"#286090",
+                        borderColor: "#286090",
                         "& .MuiCardHeader-root": {
                             backgroundColor: theme.palette.background.mediumBlue,
                         },
                         "& .MuiCardHeader-root .MuiTypography-root": {
                             color: theme.palette.common.white,
                         },
-                           "& .MuiCardHeader-action ": {
-                               margin:"0 auto",
-                            },
+                        // "& .MuiCardHeader-action ": {
+                        //     margin: "0 auto",
+                        // },
                     }
                 })
             }]
@@ -259,7 +289,7 @@ const Theme = createTheme({
                     style: ({ theme }) => ({
                         cursor: 'pointer',
                         minHeight: '48px',
-                        padding: '8px 16px',
+                        padding: '13px 24px',
                         "& .MuiTypography-root": {
                             color: theme.palette.text.greyShade100,
                         },
@@ -346,9 +376,20 @@ const Theme = createTheme({
                         borderRadius: theme.shape.borderRadius,
                         backgroundColor: theme.palette.background.light,
                         minHeight: 310,
-
                         padding: theme.spacing(3),
                     }),
+                },
+                {
+                    props: { variant: "outlined" },
+                    style: ({ theme }) => ({
+                        borderRadius: 8,
+                        backgroundColor: theme.palette.background.bodyBackground,
+                        padding: "12px",
+                        boxShadow: "none",
+                        "&:hover": {
+                            backgroundColor: theme.palette.background.blueSelected,
+                        },
+                    })
                 },
             ],
         },
@@ -378,7 +419,6 @@ const Theme = createTheme({
                 },
             ],
         },
-
         MuiChip: {
             variants: [
                 {
@@ -420,6 +460,42 @@ const Theme = createTheme({
                         },
                     }),
                 },
+            ]
+        },
+        MuiBox: {
+            variants: [
+                {
+                    props: { variant: "deleteIconCircle" },
+                    style: ({ theme }) => ({
+                        display: "inline-flex",
+                        boxShadow: theme.palette.custom.boxShadowRed,
+                        backgroundColor: theme.palette.background.deleteBg,
+                        borderRadius: "50%",
+                        alignItems: "center",
+                        justifyContent: "center",
+                    }),
+                }
+            ]
+        },
+        MuiDialog: {
+            variants: [
+                {
+                    props: { variants: "deleteDialog" },
+                    style: {
+                        "& .MuiDialog-paper": {
+                            width: "442px",
+                            height: "334px",
+                            borderRadius: 16,
+                            padding: "36px",
+                        },
+                        "@media (max-width:600px)": {
+                            "& .MuiDialog-paper": {
+                                width: "90%",
+                                height: "auto",
+                            },
+                        },
+                    },
+                }
             ]
         }
     }
